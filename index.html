@@ -1,0 +1,1072 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Solidarité & Obsèques - Épouse de M. TODOME Innocent</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #0B1120;
+      --bg-card: #131E36;
+      --bg-input: #1C294A;
+      --border: #2A3B63;
+      --gold: #D4AF37;
+      --gold-light: #F3E5AB;
+      --gold-dark: #997A15;
+      --accent: #2563EB;
+      --accent-hover: #1D4ED8;
+      --text: #F8FAFC;
+      --text-muted: #94A3B8;
+      --text-dim: #64748B;
+      --success: #10B981;
+      --danger: #EF4444;
+      --danger-hover: #DC2626;
+      --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 40px;
+      line-height: 1.5;
+    }
+
+    /* En-tête */
+    header {
+      background: linear-gradient(180deg, #16203B 0%, var(--bg-main) 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 24px 16px 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    .header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(212, 175, 55, 0.12);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      color: var(--gold-light);
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .title-main {
+      font-family: 'Cinzel', serif;
+      font-size: 1.45rem;
+      color: #FFFFFF;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-bottom: 6px;
+      line-height: 1.25;
+    }
+
+    .title-sub {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .deceased-tag {
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    /* Barre Admin flottante / status */
+    .admin-bar {
+      margin-top: 14px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .btn-admin-toggle {
+      background: rgba(37, 99, 235, 0.15);
+      border: 1px solid var(--accent);
+      color: #93C5FD;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-admin-toggle:hover {
+      background: var(--accent);
+      color: #FFFFFF;
+    }
+
+    .btn-admin-toggle.active {
+      background: rgba(16, 185, 129, 0.15);
+      border-color: var(--success);
+      color: #6EE7B7;
+    }
+
+    /* Conteneur principal */
+    .container {
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* Statistiques Cards */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    @media (min-width: 640px) {
+      .stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px 14px;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+
+    .stat-card.blue::before {
+      background: linear-gradient(90deg, var(--accent), transparent);
+    }
+
+    .stat-card.green::before {
+      background: linear-gradient(90deg, var(--success), transparent);
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+
+    .stat-value {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      line-height: 1.2;
+    }
+
+    .stat-currency {
+      font-size: 0.85rem;
+      color: var(--gold);
+      font-weight: 600;
+      margin-left: 2px;
+    }
+
+    /* Actions bar : Partage, recherche, etc. */
+    .actions-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .share-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .btn-whatsapp {
+      background: #25D366;
+      color: #0B2516;
+      grid-column: span 2;
+      font-size: 0.92rem;
+      padding: 12px;
+    }
+
+    .btn-whatsapp:hover {
+      background: #22BF5B;
+    }
+
+    .btn-secondary {
+      background: var(--bg-input);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: #27375E;
+    }
+
+    .search-input-wrapper {
+      position: relative;
+    }
+
+    .search-input {
+      width: 100%;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 11px 14px 11px 38px;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      outline: none;
+      transition: border 0.2s;
+    }
+
+    .search-input:focus {
+      border-color: var(--accent);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-dim);
+      font-size: 0.95rem;
+    }
+
+    /* Formulaire Administrateur */
+    .admin-form-card {
+      background: linear-gradient(145deg, #1A2645 0%, var(--bg-card) 100%);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      border-radius: 14px;
+      padding: 16px;
+      box-shadow: var(--card-shadow);
+      display: none;
+    }
+
+    .admin-form-card.visible {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .form-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .form-title {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .grid-form {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    @media (min-width: 640px) {
+      .grid-form {
+        grid-template-columns: 2fr 1fr 1fr;
+      }
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .form-control {
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      outline: none;
+    }
+
+    .form-control:focus {
+      border-color: var(--gold);
+    }
+
+    .btn-submit {
+      background: var(--gold);
+      color: #1A1300;
+      font-weight: 700;
+      padding: 11px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      margin-top: 6px;
+      transition: background 0.2s;
+    }
+
+    .btn-submit:hover {
+      background: #E5C158;
+    }
+
+    /* Liste des souscripteurs - Version Mobile Cards & Desktop Table */
+    .list-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+    }
+
+    .list-header {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .list-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .counter-badge {
+      background: var(--bg-input);
+      color: var(--gold-light);
+      font-size: 0.75rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+    }
+
+    /* Vue Cartes Mobiles (par défaut sur petit écran) */
+    .mobile-cards {
+      display: flex;
+      flex-direction: column;
+      divide-y: 1px solid var(--border);
+    }
+
+    .subscriber-card {
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s ease;
+    }
+
+    .subscriber-card:last-child {
+      border-bottom: none;
+    }
+
+    .subscriber-card:hover {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .subscriber-num {
+      width: 28px;
+      height: 28px;
+      background: var(--bg-input);
+      color: var(--text-muted);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .subscriber-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .subscriber-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #FFFFFF;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .subscriber-date {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      margin-top: 2px;
+    }
+
+    .subscriber-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+
+    .subscriber-amount {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--gold-light);
+    }
+
+    .admin-item-actions {
+      display: none;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    body.admin-mode .admin-item-actions {
+      display: flex;
+    }
+
+    .btn-action-icon {
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      cursor: pointer;
+    }
+
+    .btn-action-icon:hover {
+      color: #FFFFFF;
+      background: var(--border);
+    }
+
+    .btn-action-icon.delete:hover {
+      background: var(--danger);
+      border-color: var(--danger);
+      color: #FFFFFF;
+    }
+
+    .empty-state {
+      padding: 40px 16px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* Modal Admin Login */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      z-index: 1000;
+    }
+
+    .modal-overlay.open {
+      display: flex;
+    }
+
+    .modal-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      max-width: 380px;
+      width: 100%;
+      padding: 22px;
+      box-shadow: var(--card-shadow);
+      text-align: center;
+    }
+
+    .modal-box h3 {
+      font-size: 1.15rem;
+      margin-bottom: 8px;
+    }
+
+    .modal-box p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      margin-top: auto;
+      padding: 20px 16px 0;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+    }
+
+    .footer-credits {
+      color: var(--gold-dark);
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    /* Impression */
+    @media print {
+      body {
+        background: #FFFFFF;
+        color: #000000;
+        padding: 0;
+      }
+      header, .actions-panel, .admin-bar, .admin-form-card, footer, .admin-item-actions {
+        display: none !important;
+      }
+      .container {
+        max-width: 100%;
+        padding: 0;
+      }
+      .list-section {
+        border: 1px solid #000000;
+        box-shadow: none;
+      }
+      .subscriber-card {
+        border-bottom: 1px solid #CCCCCC;
+      }
+      .subscriber-name {
+        color: #000000;
+      }
+      .subscriber-amount {
+        color: #000000;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-badge">Solidarité Fraternelle</div>
+    <h1 class="title-main">Souscription Volontaire</h1>
+    <p class="title-sub">
+      Assistance pour les obsèques de l'épouse de <span class="deceased-tag">M. Innocent TODOME</span>
+    </p>
+
+    <div class="admin-bar">
+      <button class="btn-admin-toggle" id="btnAdminToggle" onclick="handleAdminToggle()">
+        <span id="adminToggleIcon">🔒</span>
+        <span id="adminToggleText">Accès Administrateur</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!-- Cartes Statut et Chiffres clés -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <span class="stat-label">Total Collecté</span>
+        <div class="stat-value">
+          <span id="totalAmount">0</span><span class="stat-currency">FCFA</span>
+        </div>
+      </div>
+      <div class="stat-card blue">
+        <span class="stat-label">Souscripteurs</span>
+        <div class="stat-value" id="totalContributors">0</div>
+      </div>
+      <div class="stat-card green" style="grid-column: span 2; @media(min-width:640px){ grid-column: span 1; }">
+        <span class="stat-label">Dernier versement</span>
+        <div class="stat-value" id="lastDonation" style="font-size: 1rem; margin-top: 4px;">--</div>
+      </div>
+    </div>
+
+    <!-- Formulaire Réservé à l'Administrateur -->
+    <div class="admin-form-card" id="adminFormCard">
+      <div class="form-header">
+        <div class="form-title">
+          <span>✍️</span> <span id="formCardTitle">Enregistrer un versement</span>
+        </div>
+        <button type="button" class="btn btn-secondary" style="padding: 4px 8px; font-size: 0.75rem;" onclick="resetForm()">Annuler</button>
+      </div>
+      <form id="subscriberForm" onsubmit="saveSubscriber(event)">
+        <input type="hidden" id="editIndex" value="-1">
+        <div class="grid-form">
+          <div class="form-group">
+            <label for="subName">Nom & Prénom(s) du donateur *</label>
+            <input type="text" id="subName" class="form-control" placeholder="Ex: KAKPO Romi Aubin" required>
+          </div>
+          <div class="form-group">
+            <label for="subDate">Date du versement *</label>
+            <input type="date" id="subDate" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="subAmount">Montant payé (FCFA) *</label>
+            <input type="number" id="subAmount" class="form-control" placeholder="Ex: 25000" min="500" step="500" required>
+          </div>
+        </div>
+        <button type="submit" class="btn-submit" style="width: 100%; margin-top: 14px;">
+          Enregistrer le souscripteur
+        </button>
+      </form>
+    </div>
+
+    <!-- Actions Partage et Recherche -->
+    <div class="actions-panel">
+      <button class="btn btn-whatsapp" onclick="shareOnWhatsApp()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+        </svg>
+        Partager le point financier sur WhatsApp
+      </button>
+
+      <div class="share-buttons">
+        <button class="btn btn-secondary" onclick="exportExcel()">
+          📥 Exporter Excel (.csv)
+        </button>
+        <button class="btn btn-secondary" onclick="window.print()">
+          🖨️ Imprimer la liste
+        </button>
+      </div>
+
+      <div class="search-input-wrapper">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" class="search-input" placeholder="Rechercher un souscripteur..." oninput="renderSubscribers()">
+      </div>
+    </div>
+
+    <!-- Liste des souscripteurs -->
+    <div class="list-section">
+      <div class="list-header">
+        <div class="list-title">
+          <span>Liste officielle des souscripteurs</span>
+          <span class="counter-badge" id="listBadge">0 nom</span>
+        </div>
+        <div style="font-size: 0.75rem; color: var(--gold);" id="liveStatus">● Actualisation directe</div>
+      </div>
+
+      <div class="mobile-cards" id="subscribersList">
+        <!-- Rendu dynamique -->
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Modal Mot de Passe Administrateur -->
+  <div class="modal-overlay" id="adminModal">
+    <div class="modal-box">
+      <h3>Accès Administrateur</h3>
+      <p>Entrez le mot de passe confidentiel pour saisir ou gérer les souscriptions.</p>
+      <input type="password" id="adminPasswordInput" class="form-control" placeholder="Code secret (Défaut: 1234)" style="text-align: center; font-size: 1.1rem; letter-spacing: 2px;">
+      <div class="modal-actions">
+        <button type="button" class="btn btn-secondary" style="flex: 1;" onclick="closeAdminModal()">Annuler</button>
+        <button type="button" class="btn" style="flex: 1; background: var(--accent); color: #FFF;" onclick="verifyAdminPassword()">Valider</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div>Solidarité Obsèques - Plateforme de coordination fraternelle</div>
+    <div class="footer-credits">Conçu pour l'assistance de la famille TODOME</div>
+  </footer>
+
+  <script>
+    // Configuration & Stockage en temps réel local/multi-appareils
+    const ADMIN_PASS = "1234"; // Code de sécurité administrateur par défaut
+    const STORAGE_KEY = "todome_obseques_subscriptions";
+    let isAdmin = false;
+
+    // Données initiales (si vide)
+    let subscribers = [
+      { id: "1", name: "ADIMI Salomon", date: "2026-11-01", amount: 25000 },
+      { id: "2", name: "KAKPO Romi Aubin", date: "2026-11-02", amount: 15000 },
+      { id: "3", name: "KPATINVOH Mahutondji Eugène", date: "2026-11-03", amount: 20000 },
+      { id: "4", name: "MAMA Oumarou Anas", date: "2026-11-04", amount: 10000 }
+    ];
+
+    // Chargement initial
+    function loadData() {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        try {
+          subscribers = JSON.parse(saved);
+        } catch (e) {
+          console.error("Erreur de lecture locale", e);
+        }
+      }
+      // Date du jour par défaut dans le formulaire
+      document.getElementById('subDate').value = new Date().toISOString().split('T')[0];
+      renderSubscribers();
+    }
+
+    // Sauvegarde avec propagation temps réel (BroadcastChannel / LocalStorage)
+    function saveData() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(subscribers));
+      if (window.BroadcastChannel) {
+        const bc = new BroadcastChannel('todome_subscriptions_channel');
+        bc.postMessage({ type: 'UPDATE' });
+      }
+      renderSubscribers();
+    }
+
+    // Écoute de synchronisation instantanée entre onglets ou fenêtres
+    if (window.BroadcastChannel) {
+      const bc = new BroadcastChannel('todome_subscriptions_channel');
+      bc.onmessage = (event) => {
+        if (event.data && event.data.type === 'UPDATE') {
+          const saved = localStorage.getItem(STORAGE_KEY);
+          if (saved) {
+            subscribers = JSON.parse(saved);
+            renderSubscribers();
+          }
+        }
+      };
+    }
+
+    // Authentification Administrateur
+    function handleAdminToggle() {
+      if (isAdmin) {
+        logoutAdmin();
+      } else {
+        document.getElementById('adminPasswordInput').value = '';
+        document.getElementById('adminModal').classList.add('open');
+        setTimeout(() => document.getElementById('adminPasswordInput').focus(), 150);
+      }
+    }
+
+    function closeAdminModal() {
+      document.getElementById('adminModal').classList.remove('open');
+    }
+
+    function verifyAdminPassword() {
+      const input = document.getElementById('adminPasswordInput').value.trim();
+      if (input === ADMIN_PASS) {
+        isAdmin = true;
+        closeAdminModal();
+        applyAdminState();
+      } else {
+        alert("Mot de passe incorrect ! Seul l'administrateur désigné peut inscrire des souscripteurs.");
+      }
+    }
+
+    function logoutAdmin() {
+      isAdmin = false;
+      applyAdminState();
+      resetForm();
+    }
+
+    function applyAdminState() {
+      const btn = document.getElementById('btnAdminToggle');
+      const text = document.getElementById('adminToggleText');
+      const icon = document.getElementById('adminToggleIcon');
+      const formCard = document.getElementById('adminFormCard');
+
+      if (isAdmin) {
+        document.body.classList.add('admin-mode');
+        btn.classList.add('active');
+        text.innerText = "Mode Admin Actif (Déconnexion)";
+        icon.innerText = "🔓";
+        formCard.classList.add('visible');
+      } else {
+        document.body.classList.remove('admin-mode');
+        btn.classList.remove('active');
+        text.innerText = "Accès Administrateur";
+        icon.innerText = "🔒";
+        formCard.classList.remove('visible');
+      }
+      renderSubscribers();
+    }
+
+    // Formatage monétaire
+    function formatMoney(amount) {
+      return new Intl.NumberFormat('fr-FR').format(amount);
+    }
+
+    // Formatage de la date
+    function formatDate(dateStr) {
+      if (!dateStr) return '';
+      const [year, month, day] = dateStr.split('-');
+      return `${day}/${month}/${year}`;
+    }
+
+    // Affichage des données
+    function renderSubscribers() {
+      const query = document.getElementById('searchInput').value.toLowerCase().trim();
+      const listContainer = document.getElementById('subscribersList');
+      const totalAmountEl = document.getElementById('totalAmount');
+      const totalContribEl = document.getElementById('totalContributors');
+      const lastDonationEl = document.getElementById('lastDonation');
+      const listBadgeEl = document.getElementById('listBadge');
+
+      // Calcul des statistiques
+      const total = subscribers.reduce((sum, item) => sum + Number(item.amount), 0);
+      totalAmountEl.innerText = formatMoney(total);
+      totalContribEl.innerText = subscribers.length;
+
+      if (subscribers.length > 0) {
+        const last = subscribers[subscribers.length - 1];
+        lastDonationEl.innerHTML = `${last.name} <span style="color:var(--gold);">(${formatMoney(last.amount)} F)</span>`;
+      } else {
+        lastDonationEl.innerText = "--";
+      }
+
+      // Filtrage
+      const filtered = subscribers.filter(item => 
+        item.name.toLowerCase().includes(query) ||
+        item.date.includes(query) ||
+        String(item.amount).includes(query)
+      );
+
+      listBadgeEl.innerText = `${filtered.length} enregistré${filtered.length > 1 ? 's' : ''}`;
+
+      if (filtered.length === 0) {
+        listContainer.innerHTML = `
+          <div class="empty-state">
+            <p style="font-size: 1.5rem; margin-bottom: 8px;">🕊️</p>
+            <p>Aucun souscripteur trouvé${query ? ' pour cette recherche' : ''}.</p>
+          </div>
+        `;
+        return;
+      }
+
+      let html = '';
+      filtered.forEach((item, idx) => {
+        const realIndex = subscribers.findIndex(s => s.id === item.id);
+        html += `
+          <div class="subscriber-card">
+            <div class="subscriber-num">${idx + 1}</div>
+            <div class="subscriber-info">
+              <div class="subscriber-name">${escapeHtml(item.name)}</div>
+              <div class="subscriber-date">📅 Versement du ${formatDate(item.date)}</div>
+            </div>
+            <div class="subscriber-right">
+              <div class="subscriber-amount">${formatMoney(item.amount)} <span style="font-size:0.75rem; color:var(--text-muted);">FCFA</span></div>
+              <div class="admin-item-actions">
+                <button type="button" class="btn-action-icon" title="Modifier" onclick="editSubscriber(${realIndex})">✏️</button>
+                <button type="button" class="btn-action-icon delete" title="Supprimer" onclick="deleteSubscriber(${realIndex})">🗑️</button>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+
+      listContainer.innerHTML = html;
+    }
+
+    // Gestion du formulaire Admin
+    function saveSubscriber(e) {
+      e.preventDefault();
+      if (!isAdmin) {
+        alert("Action interdite : vous devez être administrateur.");
+        return;
+      }
+
+      const name = document.getElementById('subName').value.trim();
+      const date = document.getElementById('subDate').value;
+      const amount = parseInt(document.getElementById('subAmount').value, 10);
+      const editIndex = parseInt(document.getElementById('editIndex').value, 10);
+
+      if (!name || !date || isNaN(amount) || amount <= 0) {
+        alert("Veuillez renseigner tous les champs correctement.");
+        return;
+      }
+
+      if (editIndex >= 0) {
+        subscribers[editIndex].name = name;
+        subscribers[editIndex].date = date;
+        subscribers[editIndex].amount = amount;
+      } else {
+        subscribers.push({
+          id: Date.now().toString(),
+          name: name,
+          date: date,
+          amount: amount
+        });
+      }
+
+      saveData();
+      resetForm();
+    }
+
+    function editSubscriber(index) {
+      if (!isAdmin) return;
+      const item = subscribers[index];
+      if (!item) return;
+
+      document.getElementById('editIndex').value = index;
+      document.getElementById('subName').value = item.name;
+      document.getElementById('subDate').value = item.date;
+      document.getElementById('subAmount').value = item.amount;
+      document.getElementById('formCardTitle').innerText = "Modifier la souscription";
+
+      document.getElementById('adminFormCard').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function deleteSubscriber(index) {
+      if (!isAdmin) return;
+      const item = subscribers[index];
+      if (!item) return;
+
+      if (confirm(`Confirmez-vous la suppression de la souscription de "${item.name}" ?`)) {
+        subscribers.splice(index, 1);
+        saveData();
+      }
+    }
+
+    function resetForm() {
+      document.getElementById('subscriberForm').reset();
+      document.getElementById('editIndex').value = "-1";
+      document.getElementById('formCardTitle').innerText = "Enregistrer un versement";
+      document.getElementById('subDate').value = new Date().toISOString().split('T')[0];
+    }
+
+    // Partage WhatsApp officiel avec mise en forme impeccable
+    function shareOnWhatsApp() {
+      const total = subscribers.reduce((sum, item) => sum + Number(item.amount), 0);
+      const count = subscribers.length;
+      const dateNow = new Date().toLocaleDateString('fr-FR');
+
+      let text = `🕊️ *SOLIDARITÉ & OBSÈQUES - FAMILLE TODOME*\n`;
+      text += `Assistance aux obsèques de l'épouse de *M. Innocent TODOME*\n\n`;
+      text += `📊 *POINT DE SITUATION AU ${dateNow}* :\n`;
+      text += `• Total collecté : *${formatMoney(total)} FCFA*\n`;
+      text += `• Nombre de souscripteurs : *${count}*\n\n`;
+      text += `📋 *LISTE OFFICIELLE DES SOUSCRIPTIONS* :\n`;
+
+      if (subscribers.length === 0) {
+        text += `_Aucun versement enregistré à ce jour._\n`;
+      } else {
+        subscribers.forEach((sub, i) => {
+          text += `${i + 1}. *${sub.name}* : ${formatMoney(sub.amount)} FCFA (${formatDate(sub.date)})\n`;
+        });
+      }
+
+      text += `\n🙏 _Merci pour vos marques de compassion et votre élan de fraternité._`;
+
+      const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`;
+      window.open(url, '_blank');
+    }
+
+    // Export Excel CSV
+    function exportExcel() {
+      if (subscribers.length === 0) {
+        alert("Aucune donnée à exporter.");
+        return;
+      }
+
+      let csv = "N°;Nom et Prenoms;Date;Montant (FCFA)\r\n";
+      subscribers.forEach((sub, i) => {
+        csv += `${i + 1};"${sub.name.replace(/"/g, '""')}";${formatDate(sub.date)};${sub.amount}\r\n`;
+      });
+
+      const total = subscribers.reduce((sum, item) => sum + Number(item.amount), 0);
+      csv += `;;TOTAL;${total}\r\n`;
+
+      const blob = new Blob(["\uFEFF" + csv], { type: 'text/csv;charset=utf-8;' });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = `Souscriptions_Obseques_TODOME_${new Date().toISOString().split('T')[0]}.csv`;
+      link.click();
+    }
+
+    function escapeHtml(string) {
+      return String(string).replace(/[&<>"']/g, function(s) {
+        return {
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          '"': '&quot;',
+          "'": '&#39;'
+        }[s];
+      });
+    }
+
+    // Lancement au chargement
+    window.onload = loadData;
+  </script>
+</body>
+</html>
+"""
+
+filename = "index.html"
+with open(filename, "w", encoding="utf-8") as f:
+    f.write(html_code)
+
+print("File index.html created successfully. Size:", len(html_code))
